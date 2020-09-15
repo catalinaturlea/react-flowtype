@@ -5,6 +5,7 @@ export default class FlowType extends React.Component {
   constructor () {
     super()
     this.updateWidthFont = this.updateWidthFont.bind(this)
+    this.textBody = React.createRef();
   }
 
   componentDidMount () {
@@ -33,7 +34,7 @@ export default class FlowType extends React.Component {
   }
 
   updateWidthFont () {
-    this.elemWidth = this.refs.textBody.offsetWidth
+    this.elemWidth = this.textBody.offsetWidth
     this.updateFontSize()
   }
 
@@ -57,7 +58,7 @@ export default class FlowType extends React.Component {
     let divStyle = (fontSize) ? {'fontSize': fontSize + 'px'} : {}
 
     return (
-      <div style={divStyle} ref='textBody'>
+      <div style={divStyle} ref={this.textBody}>
         {this.props.children}
       </div>
     )
